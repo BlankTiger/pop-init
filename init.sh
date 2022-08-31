@@ -26,14 +26,6 @@ env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 # vimv file renamer
 curl https://raw.githubusercontent.com/thameera/vimv/master/vimv > ~/bin/vimv && chmod +755 ~/bin/vimv
 
-# rust and cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source $HOME/.cargo/env
-rustup component add rust-src
-cargo install silicon
-curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
-chmod +x ~/.local/bin/rust-analyzer
-
 # snaps
 sudo snap install bitwarden spotify mailspring teams insomnia
 
@@ -52,7 +44,17 @@ p10k configure
 git clone https://github.com/BlankTiger/dotfiles.git
 cp -rv dotfiles/.* ~/
 
+# rust and cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustup component add rust-src
+cargo install silicon
+curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer
+
+# file searcher
 cargo install skim
+
 # neovide
 sudo apt install -y curl \
     gnupg ca-certificates git \
@@ -60,7 +62,6 @@ sudo apt install -y curl \
     libfreetype6-dev libasound2-dev libexpat1-dev libxcb-composite0-dev \
     libbz2-dev libsndio-dev freeglut3-dev libxmu-dev libxi-dev libfontconfig1-dev
 cargo install --git https://github.com/neovide/neovide
-
 
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -71,5 +72,4 @@ cd ./mutter-rounded/ubuntu
 ./package.sh
 
 sudo dpkg -i libmutter-10-0*.deb mutter-common*.deb
-sudo apt-mark hold mutter
-
+sudo apt-mark hold mutter mutter-common libmutter-10-0:amd64
