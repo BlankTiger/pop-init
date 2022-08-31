@@ -36,11 +36,7 @@ chmod +x ~/.local/bin/rust-analyzer
 
 # snaps
 sudo snap install bitwarden spotify mailspring teams insomnia
-git clone https://github.com/BlankTiger/dotfiles.git
 
-# install dotfiles
-cd dotfiles
-cd
 
 chsh $USER -s /usr/bin/zsh
 source ~/.zshrc
@@ -51,6 +47,10 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
 p10k configure
+
+# dotfiles
+git clone https://github.com/BlankTiger/dotfiles.git
+cp -rv dotfiles/.* ~/
 
 cargo install skim
 # neovide
