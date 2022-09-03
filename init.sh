@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-mkdir -pv ~/{.config, dls, docs, pix, tmp, vid, proj}
+mkdir -v ~/{.config,dls,docs,pix,tmp,vid,proj}
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:neovim-ppa/stable
